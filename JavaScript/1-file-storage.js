@@ -22,18 +22,6 @@ class DataAccessLayer {
   }
 }
 
-// File storage factory
-
-class FsDataAccess {
-  createDatabase(...args) {
-    return new FileStorage(this, ...args);
-  }
-
-  createCursor(...args) {
-    return new FileLineCursor(this, ...args);
-  }
-}
-
 // Abstract database
 
 class Database {
@@ -106,6 +94,18 @@ class FileStorage extends Database {
   select(query) {
     const { dal } = this;
     return dal.createCursor(this, query);
+  }
+}
+
+// File storage factory
+
+class FsDataAccess extends DataAccessLayer {
+  createDatabase(...args) {
+    return new FileStorage(this, ...args);
+  }
+
+  createCursor(...args) {
+    return new FileLineCursor(this, ...args);
   }
 }
 
