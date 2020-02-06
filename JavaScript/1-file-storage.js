@@ -9,16 +9,16 @@ class DataAccessLayer {
   constructor() {
     const proto = Object.getPrototypeOf(this);
     if (proto === DataAccessLayer) {
-      throw new Error('abstract class should not be instanciated');
+      throw new Error('Abstract class should not be instanciated');
     }
   }
 
   createDatabase() {
-    throw new Error('abstract class should not be instanciated');
+    throw new Error('Method is not implemented');
   }
 
   createCursor() {
-    throw new Error('abstract class should not be instanciated');
+    throw new Error('Method is not implemented');
   }
 }
 
@@ -28,13 +28,13 @@ class Database {
   constructor(dal) {
     const proto = Object.getPrototypeOf(this);
     if (proto === Database) {
-      throw new Error('abstract class should not be instanciated');
+      throw new Error('Abstract class should not be instanciated');
     }
     this.dal = dal;
   }
 
   select() {
-    throw new Error('select method is not implemented');
+    throw new Error('Method is not implemented');
   }
 }
 
@@ -42,14 +42,14 @@ class Cursor {
   constructor(dal) {
     const proto = Object.getPrototypeOf(this);
     if (proto === Cursor) {
-      throw new Error('abstract class should not be instanciated');
+      throw new Error('Abstract class should not be instanciated');
     }
     this.dal = dal;
     this.current = 0;
   }
 
   [Symbol.asyncIterator]() {
-    throw new Error('iterator is not implemented');
+    throw new Error('Method is not implemented');
   }
 }
 
