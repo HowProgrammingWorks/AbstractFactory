@@ -8,7 +8,7 @@ const readline = require('readline');
 class DataAccessLayer {
   constructor() {
     const proto = Object.getPrototypeOf(this);
-    if (proto === DataAccessLayer) {
+    if (proto.constructor === DataAccessLayer) {
       throw new Error('Abstract class should not be instanciated');
     }
   }
@@ -27,7 +27,7 @@ class DataAccessLayer {
 class Database {
   constructor(dal) {
     const proto = Object.getPrototypeOf(this);
-    if (proto === Database) {
+    if (proto.constructor === Database) {
       throw new Error('Abstract class should not be instanciated');
     }
     this.dal = dal;
@@ -41,7 +41,7 @@ class Database {
 class Cursor {
   constructor(dal) {
     const proto = Object.getPrototypeOf(this);
-    if (proto === Cursor) {
+    if (proto.constructor === Cursor) {
       throw new Error('Abstract class should not be instanciated');
     }
     this.dal = dal;
