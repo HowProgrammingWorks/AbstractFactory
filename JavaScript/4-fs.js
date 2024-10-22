@@ -6,15 +6,17 @@ const readline = require('node:readline');
 class FileLineCursor {
   constructor(fileStorage, query) {
     this.query = query;
-    this.lines = readline.createInterface({
-      input: fileStorage.fileStream,
-      crlfDelay: Infinity,
-    })[Symbol.asyncIterator]();
+    this.lines = readline
+      .createInterface({
+        input: fileStorage.fileStream,
+        crlfDelay: Infinity,
+      })
+      [Symbol.asyncIterator]();
   }
 
   [Symbol.asyncIterator]() {
     const cursor = this;
-    return ({
+    return {
       async next() {
         do {
           const { value, done } = await cursor.lines.next();
@@ -28,8 +30,8 @@ class FileLineCursor {
           }
           if (condition) return { value: data, done: false };
         } while (true);
-      }
-    });
+      },
+    };
   }
 }
 
