@@ -8,11 +8,13 @@ const dataAccessStrategies = {
 
 // Usage
 
-(async () => {
+const main = async () => {
   const dal = dataAccessStrategies['fs'];
   const db = dal.createDatabase('./storage.dat');
   const cursor = db.select({ city: 'Roma' });
   for await (const record of cursor) {
     console.dir(record);
   }
-})();
+};
+
+main();
